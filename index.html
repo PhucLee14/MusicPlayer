@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css?fbclid=IwAR2TXqBPR1BwetsIfkcLDjYfw2kuhlxqmjkGdzKaCdAd6NkAkWniljGiVB8">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="player">
+        <div class="dashboard">
+            <header>
+                <h4>Now playing:</h4>
+                <h2>Tôi Là Ai Trong Em</h2>
+            </header>
+            <div class="cd">
+                <img src="./img/ToiLaAiTrongEm.png" alt="">
+            </div>
+            <div class="control">
+                <div class="btn btn-repeat">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </div>
+                <div class="btn btn-pre">
+                    <i class="fa-solid fa-left-to-line"></i>
+                </div>
+                <div class="btn btn-play">
+                    <i class="fa-duotone fa-play"></i>
+                </div>
+                <div class="btn btn-next">
+                    <i class="fa-solid fa-right-to-line"></i>
+                </div>
+                <div class="btn btn-shuffle">
+                    <i class="fa-solid fa-shuffle"></i>
+                </div>
+            </div>
+            <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+        </div>
+        <div class="playlist">
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class="song">
+                <div class="thumb">
+                    <img src="./img/BAT.jpg" alt="">
+                </div>
+                <div class="body">
+                    <h3>Hẹn một mai</h3>
+                    <p>Bùi Anh Tuấn</p>
+                </div>
+                <div class="option">
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+
+        const app = {
+            songs: [
+                {
+                    name: 'Tôi Là Ai Trong Em',
+                    singer: 'Hoãng Dũng',
+                    path: './songs/Tôi Là Ai Trong Em  Hoàng Dũng Official Lyrics Video.mp3',
+                    img: './img/ToiLaAiTrongEm.png',
+                },
+                {
+                    name: 'Hẹn Một Mai',
+                    singer: 'Bùi Anh Tuấn',
+                    path: './songs/Hẹn một mai  Bùi Anh Tuấn.mp3',
+                    img: './img/BAT.jpg',
+                },
+                {
+                    name: 'Anh Thương Em Nhất Mà',
+                    singer: 'La. x Log x Tib',
+                    path: './songs/Anh Thương Em Nhất Mà  Lã x Log x TiB  OFFICIAL.mp3',
+                    img: './img/atenm.jpg',
+                },
+                {
+                    name: 'Nơi Này Có Anh',
+                    singer: 'SON TUNG MTP',
+                    path: './songs/NƠI NÀY CÓ ANH  OFFICIAL MUSIC VIDEO  SƠN TÙNG MTP.mp3',
+                    img: './img/nnca.jpg',
+                },
+                {
+                    name: 'Nơi Tình Yêu Kết Thúc',
+                    singer: 'Bùi Anh Tuấn',
+                    path: './songs/y2mate.com - Nơi Tình Yêu Kết Thúc  lyric video   Bùi Anh Tuấn.mp3',
+                    img: './img/BAT.jpg',
+                },
+                {
+                    name: 'Yêu Người Có Ước Mơ',
+                    singer: 'buitruonglinh',
+                    path: './songs/Yêu Người Có Ước Mơ  buitruonglinh.mp3',
+                    img: './img/yncum.jpg',
+                }
+            ],
+            
+            render: function() {
+
+            },
+            
+            start: function() {
+
+            }
+        }
+
+        app.start();
+    </script>
+</body>
+</html>
