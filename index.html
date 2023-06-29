@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/icon.png">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.2/css/all.css?fbclid=IwAR2TXqBPR1BwetsIfkcLDjYfw2kuhlxqmjkGdzKaCdAd6NkAkWniljGiVB8">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Music App</title>
 </head>
 <body>
     <div class="player">
         <div class="dashboard">
             <header>
                 <h4>Now playing:</h4>
-                <h2>Tôi Là Ai Trong Em</h2>
             </header>
             <div class="cd">
                 <div class="cd-thumb">
@@ -27,7 +27,8 @@
                     <i class="fa-solid fa-left-to-line"></i>
                 </div>
                 <div class="btn btn-play">
-                    <i class="fa-duotone fa-play"></i>
+                    <i class="fa-duotone fa-play playing-icon"></i>
+                    <i class="fa-solid fa-pause pausing-icon"></i>   
                 </div>
                 <div class="btn btn-next">
                     <i class="fa-solid fa-right-to-line"></i>
@@ -37,6 +38,17 @@
                 </div>
             </div>
             <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+            <div class="song-infor">
+                <h2>Bài hát</h2>
+                <h3>Ca sĩ</h3>
+            </div>
+            <div class="volume-control">
+                <div class="volume-btn">
+                    <i class="fa-solid fa-volume volume-icon"></i>
+                    <i class="fa-solid fa-volume-slash volume-mute"></i>
+                </div>
+                <input id="volume" class="volume" type="range" value="100" step="1" min="0" max="100">
+            </div>
             <audio id="audio" src=""></audio>
         </div>
         <div class="playlist">
@@ -45,8 +57,8 @@
                     <img src="./img/BAT.jpg" alt="">
                 </div>
                 <div class="body">
-                    <h3>Hẹn một mai</h3>
-                    <p>Bùi Anh Tuấn</p>
+                    <h3 class="title">Hẹn một mai</h3>
+                    <p class="author">Bùi Anh Tuấn</p>
                 </div>
                 <div class="option">
                     <i class="fa-solid fa-ellipsis"></i>
@@ -54,146 +66,6 @@
             </div>
         </div>
     </div>
-    <script>
-        const $ = document.querySelector.bind(document);
-        const $$ = document.querySelectorAll.bind(document);
-
-        const playlist = $('.playlist');
-
-        const app = {
-
-            currentIndex: 0,
-
-            songs: [
-                {
-                    name: 'Tôi Là Ai Trong Em',
-                    singer: 'Hoàng Dũng',
-                    path: './songs/Tôi Là Ai Trong Em  Hoàng Dũng Official Lyrics Video.mp3',
-                    img: './img/ToiLaAiTrongEm.png',
-                },
-                {
-                    name: 'Hẹn Một Mai',
-                    singer: 'Bùi Anh Tuấn',
-                    path: './songs/Hẹn một mai  Bùi Anh Tuấn.mp3',
-                    img: './img/BAT.jpg',
-                },
-                {
-                    name: 'Anh Thương Em Nhất Mà',
-                    singer: 'La. x Log x Tib',
-                    path: './songs/Anh Thương Em Nhất Mà  Lã x Log x TiB  OFFICIAL.mp3',
-                    img: './img/atenm.jpg',
-                },
-                {
-                    name: 'Nơi Này Có Anh',
-                    singer: 'SON TUNG MTP',
-                    path: './songs/NƠI NÀY CÓ ANH  OFFICIAL MUSIC VIDEO  SƠN TÙNG MTP.mp3',
-                    img: './img/nnca.jpg',
-                },
-                {
-                    name: 'Nơi Tình Yêu Kết Thúc',
-                    singer: 'Bùi Anh Tuấn',
-                    path: './songs/y2mate.com - Nơi Tình Yêu Kết Thúc  lyric video   Bùi Anh Tuấn.mp3',
-                    img: './img/BAT.jpg',
-                },
-                {
-                    name: 'Yêu Người Có Ước Mơ',
-                    singer: 'buitruonglinh',
-                    path: './songs/Yêu Người Có Ước Mơ  buitruonglinh.mp3',
-                    img: './img/yncum.jpg',
-                },
-                {
-                    name: 'Chỉ Một Đêm Nữa Thôi',
-                    singer: 'RPT MCK ft Tlinh',
-                    path: './songs/06 Chỉ Một Đêm Nữa Thôi  RPT MCK  ft tlinh    99  the album.mp3',
-                    img: './img/mck.jpg',
-                },
-                {
-                    name: 'Thôi Em Đừng Đi',
-                    singer: 'RPT MCK  ft Trung Trần',
-                    path: './songs/07 Thôi Em Đừng Đi  RPT MCK  ft Trung Trần    99  the album.mp3',
-                    img: './img/mck.jpg',
-                },
-                {
-                    name: 'Cuốn Cho Anh Một Điếu Nữa Đi',
-                    singer: 'RPT MCK',
-                    path: './songs/09 Cuốn Cho Anh Một Điếu Nữa Đi  RPT MCK   99  the album.mp3',
-                    img: './img/mck.jpg',
-                },
-                {
-                    name: 'Anh Đã Ổn Hơn',
-                    singer: 'RPT MCK',
-                    path: './songs/14 Anh Đã Ổn Hơn  RPT MCK  99 the album.mp3',
-                    img: './img/mck.jpg',
-                },
-                {
-                    name: 'Thờ Er',
-                    singer: '16 BrT ft RPT MCK',
-                    path: './songs/Thờ er remix  BrT ft MCK  Prod by Snowz.mp3',
-                    img: './img/mck.jpg',
-                },
-            ],
-            
-            render: function() {
-                const htmls = this.songs.map(song => {
-                    return `
-                    <div class="song">
-                        <div class="thumb">
-                            <img src="${song.img}" alt="">
-                        </div>
-                        <div class="body">
-                            <h3>${song.name}</h3>
-                            <p>${song.singer}</p>
-                        </div>
-                        <div class="option">
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </div>
-                    </div>
-                    `
-                })
-                $('.playlist').innerHTML = htmls.join("");
-            },
-
-            defineProperties: function() {
-                Object.defineProperty(this,'currentSong', {
-                    get: function() {
-                        return this.songs[this.currentIndex];
-                    }
-                });
-            },
-
-            handleEvents: function() {
-                const cd = $('.cd');
-                const cdWidth = cd.offsetWidth;
-
-                document.onscroll = function() {
-                    const scrollTop = window.scrollY;
-                    const newcdWidth = cdWidth - scrollTop;
-
-                    cd.style.width = newcdWidth > 0 ? newcdWidth + "px" : 0
-                    cd.style.opacity = newcdWidth / cdWidth;
-                }
-            },
-
-            loadCurrentSong: function() {
-                const heading = $('header h2');
-            },
-            
-            start: function() {
-                //Định nghĩa thuộc tính
-                this.defineProperties();
-
-                //Lắng nghe / xử lí sự kiện
-                this.handleEvents();
-
-                //Tải thông tin bài hát đầu tiên vào UI
-                this.loadCurrentSong();
-
-                //Render playlist
-                this.render();
-            }
-        }
-
-        app.start();
-    </script>
+    <script src="./script.js"></script>
 </body>
 </html>
