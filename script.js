@@ -17,11 +17,15 @@ const $ = document.querySelector.bind(document);
         const volumeCurrent = $('.volume');
         const audio = $('#audio');
         const volumeBtn = $('.volume-btn');
+        const volumeIconBtn = $('.volume-icon');
+        const volumeMuteBtn = $('.volume-mute');
 
         const playlist = $('.playlist');
 
         const app = {
             currentIndex: 0,
+            currentVolume: 1,
+            getCurrentVolume: 1,
             isMute: false,
             isPLaying: false,
             isRepeat: false,
@@ -140,7 +144,7 @@ const $ = document.querySelector.bind(document);
             handleEvents: function() {
                 //Xử lí phóng to thu nhở CD
                 const cdWidth = cd.offsetWidth;
-                const _this= this;
+                const _this = this;
                 //Xử lí CD quay/dừng
 
                 const cdThumbAnimate = cdThumb.animate([
@@ -208,9 +212,11 @@ const $ = document.querySelector.bind(document);
                     audio.currentTime = seekTime;
                 }
 
+                //Xử lí thay đổi âm lượng
                 volume.oninput = function(e) {
-                    const currentVolume = volume.value / 100;
+                    currentVolume = volume.value / 100;
                     audio.volume = currentVolume;
+                    _this.getCurrentVolume = audio.volume;
                 }
 
                 //Chuyển bài tiếp theo
@@ -243,9 +249,21 @@ const $ = document.querySelector.bind(document);
                     }
                 }
 
-                volumeBtn.onclick = function() {
-                    
+                volumeIconBtn.onclick = function() {
+                    // _this.isMute = true;
+                    volumeBtn.classList.add('mute');
+                    audio.volume = 0;
+                    volume.value = 0;
                 }
+
+                volumeMuteBtn.onclick = function() {
+                    // _this.isMute = true;
+                    volumeBtn.classList.remove('mute');
+                    audio.volume = _this.getCurrentVolume;
+                    volume.value = _this.getCurrentVolume * 100;
+                    console.log(_this.getCurrentVolume);
+                }
+                
             },
 
             loadCurrentSong: function() {
