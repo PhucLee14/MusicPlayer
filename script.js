@@ -22,6 +22,8 @@ const $ = document.querySelector.bind(document);
 
         const playlist = $('.playlist');
 
+        const theme = $('.theme-control a');
+
         const app = {
             currentIndex: 0,
             currentVolume: 1,
@@ -29,7 +31,38 @@ const $ = document.querySelector.bind(document);
             isMute: false,
             isPLaying: false,
             isRepeat: false,
+            isNightMode: false,
             songs: [
+                {
+                    name: 'Tình Đắng Như Ly Cà Phê',
+                    singer: '.nân ft Ngơ',
+                    path: './songs/nân x Ngơ  tình đắng như ly cà phê  tas release.mp3',
+                    img: './img/TDNLCF.jpg',
+                },
+                {
+                    name: 'Muốn Em Là Của Riêng Mình',
+                    singer: '.nân ft Ngơ',
+                    path: './songs/Muốn em là của riêng mình   Ngơ ft  Nân Video Lyrics (1).mp3',
+                    img: './img/MELCRM.jpg',
+                },
+                {
+                    name: 'Wrong Times',
+                    singer: 'puppy & Dangrangto ft FOWLEX Snowz',
+                    path: './songs/puppy  Dangrangto   Wrong Times  ft FOWLEX Snowz  OFFICIAL LYRICS VIDEO.mp3',
+                    img: './img/wrongtime.jpg',
+                },
+                {
+                    name: 'Xích Thêm Chút',
+                    singer: 'RPT Groovie ft TLinh x RPT MCK',
+                    path: './songs/Xích Thêm Chút  XTC Remix  RPT Groovie ft TLinh x RPT MCK Prod by fatbenn  RPT LT RAPITALOVE.mp3',
+                    img: './img/xtc.jpg',
+                },
+                {
+                    name: 'Tay To',
+                    singer: 'RPT MCK x RPT PhongKhin',
+                    path: './songs/Rapitalove EP Tay To  RPT MCK x RPT PhongKhin Prod by RPT PhongKhin Official Lyric Video.mp3',
+                    img: './img/tayto.jpg',
+                },
                 {
                     name: 'Tôi Là Ai Trong Em',
                     singer: 'Hoàng Dũng',
@@ -264,6 +297,16 @@ const $ = document.querySelector.bind(document);
                     console.log(_this.getCurrentVolume);
                 }
                 
+                theme.onclick = function() {
+                    if(_this.isNightMode) {
+                        theme.classList.remove('night-mode');
+                        _this.isNightMode = false;
+                    }
+                    else {
+                        theme.classList.add('night-mode');
+                        _this.isNightMode = true;
+                    }
+                }
             },
 
             loadCurrentSong: function() {
