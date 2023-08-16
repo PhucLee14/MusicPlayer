@@ -196,7 +196,7 @@ body {
 }
 
 .control .btn.active {
-    color: var(--primary-color);
+    color: #fff;
 }
 
 /* .player .dashboard .control .btn:hover{
