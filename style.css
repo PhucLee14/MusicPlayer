@@ -219,14 +219,14 @@ body {
 }
 
 .player .dashboard .control .btn-play i{
-    color: #fff;
+    color: #62D0E1;
     font-size: 24px;
 }
 
 .progress {
     width: 100%;
     -webkit-appearance: none;
-    height: 6px;
+    height: 3px;
     background: var(--primary-color);
     outline: none;
     opacity: 0.7;
@@ -288,7 +288,9 @@ input[type=range].styled-slider.slider-progress::-webkit-slider-runnable-track {
     width: 50%;
     -webkit-appearance: none;
     height: 8px;
-    background: #d3d3d3;
+    background: transparent;
+    border: 2px solid var(--chose-color);
+    border-radius: 20px;
     outline: none;
     opacity: 0.7;
     -webkit-transition: 0.2s;
