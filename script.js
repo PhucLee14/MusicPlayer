@@ -12,6 +12,7 @@ const $ = document.querySelector.bind(document);
         const nextBtn = $('.btn-next');
         const preBtn = $('.btn-pre');
         const repeatBtn = $('.btn-repeat');
+        const shuffleBtn = $('.btn-shuffle');
 
         const progress = $('.progress');
         const volumeCurrent = $('.volume');
@@ -32,6 +33,7 @@ const $ = document.querySelector.bind(document);
             isPLaying: false,
             isRepeat: false,
             isNightMode: false,
+            isShuffle: false,
             songs: [
                 {
                     name: 'Tình Đắng Như Ly Cà Phê',
@@ -173,6 +175,16 @@ const $ = document.querySelector.bind(document);
                 }
                 this.loadCurrentSong();
             },
+            playRandomSong: function() {
+                let newIndex;
+                do {
+                    newIndex = Math.floor(Math.random() * this.songs.length);
+
+                }
+                while(newIndex ===  this.currentIndex);
+                this.currentIndex = newIndex;
+                this.loadCurrentSong();
+            },
 
             handleEvents: function() {
                 //Xử lí phóng to thu nhở CD
@@ -254,22 +266,36 @@ const $ = document.querySelector.bind(document);
 
                 //Chuyển bài tiếp theo
                 nextBtn.onclick = function() {
-                    _this.nextCurrentSong();
+                    if(_this.isShuffle) {
+                        _this.playRandomSong();
+                    }
+                    else {
+                        _this.nextCurrentSong();
+                    }
                     audio.play();
                     _this.render();
                 }
 
                 //Chuyển bài trước đó
                 preBtn.onclick = function() {
-                    _this.preCurrentSong();
+                    if(_this.isShuffle) {
+                        _this.playRandomSong();
+                    }
+                    else {
+                        _this.preCurrentSong();
+                    }
                     audio.play();
                     _this.render();
                 }
 
-
                 repeatBtn.onclick = function() {
                     _this.isRepeat = !_this.isRepeat;
                     repeatBtn.classList.toggle('active',_this.isRepeat);
+                }
+
+                shuffleBtn.onclick = function() {
+                    _this.isShuffle = !_this.isShuffle;
+                    shuffleBtn.classList.toggle('active',_this.isShuffle);
                 }
 
                 playlist.onclick = function(e) {

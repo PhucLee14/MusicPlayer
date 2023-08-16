@@ -171,13 +171,13 @@ body {
     color: var(--primary-color);
 }
 
-.player .dashboard .control .btn:hover{
+/* .player .dashboard .control .btn:hover{
     color:var(--primary-color);
 }
 
 .player .dashboard .control .btn-play:hover{
     opacity: .3;
-}
+} */
 
 .player .dashboard .control i{
     font-size: 24px;
